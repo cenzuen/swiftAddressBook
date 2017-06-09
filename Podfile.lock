@@ -1,0 +1,24 @@
+PODS:
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - IQKeyboardManagerSwift (4.0.9)
+  - LKDBHelper (2.4.2):
+    - FMDB
+  - SnapKit (3.2.0)
+
+DEPENDENCIES:
+  - FMDB
+  - IQKeyboardManagerSwift (= 4.0.9)
+  - LKDBHelper
+  - SnapKit (~> 3.2.0)
+
+SPEC CHECKSUMS:
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  IQKeyboardManagerSwift: 2eefe6c429b86aa08bfbc1b5c891164d754adf91
+  LKDBHelper: ab67373b32f47463bf5f838d730f225824f4492a
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+
+PODFILE CHECKSUM: 2b6066a7f90af22e680eb42a4685c260359331f9
+
+COCOAPODS: 1.1.1
