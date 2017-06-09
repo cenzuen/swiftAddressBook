@@ -1,2 +1,2 @@
 # swiftAddressBook
-learn the Swift3 and test to make a project
+learn the Swift3 and try to make a project
