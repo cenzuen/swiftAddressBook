@@ -12,16 +12,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     var tableView:UITableView?
     
-    var dataArr:[contactDBModel]? = nil
+//    var dataArr:[contactDBModel]? = nil
     
-    lazy var items : [String]? = {
-        () -> [String]? in
+    lazy var dataArr : [contactDBModel]? = {
+        () -> [contactDBModel]? in
         
-        guard let result = contactDBModel.search(withSQL: "select from contact") else{
-            return nil
+        guard let result = contactDBModel.search(withWhere: nil, orderBy: nil, offset: 0, count: 0) else{
+            return nil//search(withSQL: "select * from contactList")
         }
         
-        return result as? [String]
+        return result as? [contactDBModel]
     }()
     
     var helper:LKDBHelper?
@@ -121,14 +121,30 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         detailVC.saveContact = {
             (contact:contactDBModel) in
             
-            contactDBModel.insert(toDB: contact)
+            contact.updateToDB()//insert(toDB: contact)
             
-        }
+            self.dataArr?[indexPath.row] = contact
+            
+            self.tableView?.reloadData()
+        }//Users/joey0824/Desktop/swiftTest/swiftTest-10 AddressBook/swiftTest-10 AddressBook/ViewController.swift:126:61: Cannot assign to immutable expression of type 'contactDBModel?'
         
         self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
-
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delAction = UITableViewRowAction(style: .destructive, title: "删除") { (rowAction, indexPath) in
+            
+            self.dataArr?[indexPath.row].deleteToDB()
+            
+            self.dataArr?.remove(at: indexPath.row)
+            
+            self.tableView?.reloadData()
+        }
+        
+        return [delAction]
+        
+    }
 
     //tabelView
     func setupTableView() {
@@ -154,9 +170,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let detailVC = detailViewController()
         
+        detailVC.contact = contactDBModel.init()
+        
         detailVC.saveContact = {
         
             (contact:contactDBModel) in
+            
+            contactDBModel.insert(toDB: contact)
             
             self.dataArr?.append(contact)
             
@@ -176,10 +196,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             var arrayM = [contactDBModel]()
             
             for i in 0..<20 {
-                var contact = contactDBModel.init(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))//contactModel.init(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))
+//                var contact = contactDBModel.init(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))//contactModel.init(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))
                 //let contact = contactDBModel(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))//contactModel.init(name: "客户\(i)", phoneNum: "1860"+String(format: "%06d", arc4random_uniform(100000)))
                 
-                arrayM.append(contact)
+//                arrayM.append(contact)
             }
             
             DispatchQueue.main.async(execute: { 

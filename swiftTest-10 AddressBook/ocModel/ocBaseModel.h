@@ -11,7 +11,7 @@
 @interface ocBaseModel : NSObject
 
 
-+(NSString *)getCreateTableSQL;
+//+(NSString *)getCreateTableSQL;
 
 + (LKDBHelper *)getUsingLKDBHelper;
 @end

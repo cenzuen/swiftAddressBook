@@ -26,6 +26,11 @@ class contactDBModel: ocBaseModel {
         
     }
     
+    //重写父类init方法
+    override init() {
+        super.init()
+    }
+    
     override class func getPrimaryKey() -> String {
         return "contactID"
     }

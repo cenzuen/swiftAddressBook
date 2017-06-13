@@ -21,6 +21,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var rightItem:UIBarButtonItem? = nil
     
     
+    
     var contact:contactDBModel?{
         didSet{
             print(contact!)
@@ -30,6 +31,8 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         
     }
+    
+    
     
     var saveContact:Handler?
     
@@ -43,6 +46,8 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         setupTableView()
         
         setupItem()
+        
+        self.rightItem?.isEnabled = false
         
        NotificationCenter.default.addObserver(self, selector: #selector(textChange(noti:)), name: .UITextFieldTextDidChange, object: nil)
         
@@ -61,7 +66,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         print(textField!)
 //       print("address:\(&textField)")
         if contact == nil {
-            self.contact = contactDBModel(name: "", phoneNum: "")
+//            self.contact = contactDBModel(name: "", phoneNum: "")
         }
         
         if textField?.tag == 1 {
@@ -77,7 +82,10 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
             print("tag2:\(textField?.text ?? "noData")")
         }
         
-        rightItem?.isEnabled = ((name?.characters.count)! > 0 && (phoneNum?.characters.count)! > 0) ? true:false
+        print("name:\(name?.characters.count ?? 0)")
+        print("phoneNum:\(phoneNum?.characters.count ?? 0)")
+        
+        rightItem?.isEnabled = ((name?.characters.count ?? 0) > 0 && (phoneNum?.characters.count ?? 0) > 0) ? true:false
         
     }
     
