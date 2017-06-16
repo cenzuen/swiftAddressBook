@@ -41,6 +41,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         print(NSHomeDirectory())
         
+        print(getGasPrices().1)
+        
 //        self.loadData { (dataArr) in
 //            contactDBModel.getCreateTableSQL()
 //            contactDBModel.insertArrayByAsync(toDB: dataArr)
@@ -186,6 +188,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         self.navigationController?.pushViewController(detailVC, animated: true)
         
+    }
+    
+    
+    func getGasPrices() -> (Int,Double,String,Int) {
+        return (12,12.4,"hahaha",1)
     }
     
     private func loadData(competion:@escaping (_ list:[contactDBModel])->()) {

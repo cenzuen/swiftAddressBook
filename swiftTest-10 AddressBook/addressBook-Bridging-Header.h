@@ -10,5 +10,5 @@
 #define addressBook_Bridging_Header_h
 
 #import "ocBaseModel.h"
-//#import "LKDBHelper-umbrella.h"
-#endif /* addressBook_Bridging_Header_h */
+
+#endif
