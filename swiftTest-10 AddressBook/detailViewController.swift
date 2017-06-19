@@ -37,9 +37,6 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var saveContact:Handler?
     
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +51,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         
         
-        // Do any additional setup after loading the view.
+      
     }
     
     func textChange(noti:Notification) {
@@ -64,9 +61,9 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let textField = noti.object as? UITextField
         
         print(textField!)
-//       print("address:\(&textField)")
+        
         if contact == nil {
-//            self.contact = contactDBModel(name: "", phoneNum: "")
+            //self.contact = contactDBModel(name: "", phoneNum: "")
         }
         
         if textField?.tag == 1 {
@@ -105,8 +102,6 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
             cell.infoTextField.tag = 1
             cell.infoTextField.delegate = self
             
-            
-//            NotificationCenter.default.addObserver(self, selector: #selector(textChange(noti:)), name: .UITextFieldTextDidChange, object: cell.infoTextField)
           
         case 1:
             
@@ -118,7 +113,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             
         default:
-//            let cell = detailTableViewCell.initCell(tableView: tableView)
+
             print("未找到")
             
             
@@ -127,35 +122,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        
-//        switch indexPath.row {
-//        case 0:
-//            let nameCell = detailTableViewCell.initCell(tableView: tableView)
-//            nameCell.infoTextField.placeholder = "请输入联系人姓名"
-//            nameCell.infoTextField.text = self.contact?.name
-//            nameCell.infoTextField.tag = 0
-//            nameCell.infoTextField.delegate = self
-//            NotificationCenter.default.addObserver(self, selector: #selector(textChange(textField:)), name: .UITextFieldTextDidChange, object: nameCell.infoTextField)
-//            return nameCell
-//        case 1:
-//            let phoneNumCell = detailTableViewCell.initCell(tableView: tableView)
-//            phoneNumCell.infoTextField.placeholder = "请输入联系人电话号码"
-//            phoneNumCell.infoTextField.text = self.contact?.phoneNum
-//            phoneNumCell.infoTextField.tag = 1
-//            phoneNumCell.infoTextField.delegate = self
-//            NotificationCenter.default.addObserver(self, selector: #selector(textChange(textField: )), name: .UITextFieldTextDidChange, object: phoneNumCell.infoTextField)
-//            
-//            return phoneNumCell
-//        default:
-//            let cell = detailTableViewCell.initCell(tableView: tableView)
-//            print("未找到")
-//            return cell
-//        }
-//        
-//    }
-//    
+
     func setupTableView() {
         
         self.tableView = UITableView(frame: self.view.bounds,style:.plain)
@@ -165,13 +132,11 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.tableView?.dataSource = self
         self.tableView?.separatorStyle = .none
         
-        //        self.tableView?.register( UINib(nibName: "detailTableViewCell", bundle: nil), forCellReuseIdentifier: "detailCell")
-        
         
         view.addSubview(tableView!)
     }
     
-    //#MARK item
+    //MARK: item
     func setupItem() {
         self.rightItem = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(saveClick))
         
@@ -185,25 +150,7 @@ class detailViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.navigationController?.popViewController(animated: true)
     }
-//    
-//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-//        
-//        if contact == nil {
-//            self.contact = contactModel(name: "", phoneNum: "")
-//        }
-//        
-//        if textField.tag == 0 {
-//            self.contact?.name = textField.text
-//            self.name = textField.text
-//            print("tag0:\(textField.text ?? "noData")")
-//        }
-//        
-//        else if textField.tag == 1{
-//            self.contact?.phoneNum = textField.text
-//            self.phoneNum = textField.text
-//             print("tag1:\(textField.text ?? "noData")")
-//        }
-//    }
+
 
     deinit {
         NotificationCenter.default.removeObserver(self)
